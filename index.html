@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=form, initial-scale=1.0">
+    <title>Document</title>
+    <script
+  src="https://code.jquery.com/jquery-3.6.1.min.js"
+  integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+  crossorigin="anonymous"></script>
+
+
+
+</head>
+<body>
+    <!-- <form action="some.php" method="post"> -->
+        <input type="text" name="title" class="title"> <br>
+        <textarea name="content" class="content" cols="30" rows="10"></textarea> <br>
+        <button class="otpravka" type="submit">Отправить</button>
+    <!-- </form> -->
+    
+    
+    <script>
+        $(document).ready(function() {
+            $('button.otpravka').on('click', function() {
+                var titleValue = $('input.title').val();
+                var contentValue = $('textarea.content').val();
+                
+
+
+                $.ajax({
+                    method: "POST",
+                    url: "some.php",
+                    data: { title: titleValue, content: contentValue }
+                })
+                    .done(function( msg ) {
+                        // alert( "Data Saved: " + msg );
+                });
+                $('input.title').val('');
+                $('textarea.content').val('');
+            })
+        });
+    </script>
+</body>
+</html>
